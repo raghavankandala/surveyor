@@ -1,0 +1,34 @@
+Title: Please write a basic survey application in Rails. Since you will be writing test-driven code after you join us, we expect the same on this task also.
+
+Description: The survey application has 2 roles. A survey admin and a survey taker. 
+
+The survey admin should be able to: 
+
+See a list of existing surveys
+Create/edit/delete a survey
+Add/delete/edit questions to a survey
+For each survey, see a list of survey responses from the normal users.
+No need of any interface to create admin users, just mark them so manually.
+
+A normal user should be able to: 
+See the list of existing surveys
+Take a survey (ie. enter answers for all the questions and submit it)
+See appropriate validation messages. eg: if he enters a non-numeric value for a numeric question or forgets to answer one of the questions.
+See "thanks message" after completing a survey
+
+Apart from these two roles, non-logged users should be able to:
+
+See the list of surveys
+Signup (username, email are the required fields and email should be verified)
+Login
+
+Types of Questions
+
+Essay question (answer for which is a line of text / paragraph or more)
+Numeric question
+Date question (answer for which is a date)
+While adding a survey question, admin should be able to choose its type. Survey taker should be shown appropriate input options according to the question type. 
+Essay - text area
+Numeric - text field with smaller width
+Date - text field with date picker.
+Design should be flexible so that we can add other question types in future (like a multiple choice question)
