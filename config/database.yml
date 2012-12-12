@@ -1,0 +1,20 @@
+development: 
+  adapter: postgresql
+  encoding: unicode
+  database: surveyor_development
+  username: postgres
+  password: postgres
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: surveyor_test
+  username: postgres
+  password: postgres
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: surveyor_production
+  username: postgres
+  password: postgres
