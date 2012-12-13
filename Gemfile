@@ -6,6 +6,7 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'devise'
 
 
 # Gems used only for assets and not required
@@ -16,10 +17,10 @@ group :assets do
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'libv8', '~> 3.11.8'
-
   gem 'therubyracer' #, :platforms => :ruby
-
+  gem 'bootstrap-sass'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-ui-rails'
 end
 
 gem 'jquery-rails'
