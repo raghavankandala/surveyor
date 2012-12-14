@@ -1,0 +1,22 @@
+<Div class="row-fluid offset1">
+	<Div class="span8 well">
+		<fieldset>
+			<legend>Sign In</legend>
+
+			<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical'}) do |f| %>
+				  <%= devise_error_messages! %>
+				  <%= f.input :email, :label => false, :placeholder => "Email Address (john@gmail.com) " %>
+				  <%= f.input :password , :label => false, :placeholder => "Password" %>
+				  <% if devise_mapping.rememberable? -%>
+				  	<%= f.input :remember_me, :as => :boolean, :wrapper => :inline_checkbox %>
+				  <% end -%>
+		</fieldset>
+	
+		<div class="form-actions">
+			<%= f.submit "Sign In", :class => 'btn btn-primary' %> <br/><br/>
+			<%= render "devise/shared/links" %>
+		</div>
+	
+		<% end %>	
+	</Div>
+</Div>

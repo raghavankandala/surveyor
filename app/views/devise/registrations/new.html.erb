@@ -1,0 +1,22 @@
+<Div class="row-fluid offset1">
+	<Div class="span7 well">
+		<fieldset>
+			<legend>Sign up</legend>
+
+			<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical'}) do |f| %>
+			  <%= devise_error_messages! %>
+
+			  <%= f.input :username, :label => false, :placeholder => "User name (Eg: Srinivas) " %>
+			  <%= f.input :email, :label => false, :placeholder => "Email Address (john@gmail.com) " %>
+			  <%= f.input :password , :label => false, :placeholder => "New Password" %>
+			  <%= f.input :password_confirmation, :label => false, :placeholder => "Re-enter Password" %>
+		</fieldset>
+	
+		<div class="form-actions">
+			<%= f.submit "Sign up", :class => 'btn btn-primary' %> <br/><br/>
+			<%= render "devise/shared/links" %>
+		</div>
+	
+		<% end %>	
+	</Div>
+</Div>

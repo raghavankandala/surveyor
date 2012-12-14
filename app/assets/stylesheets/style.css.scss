@@ -1,0 +1,52 @@
+input[type="text"], input[type="password"], input[type="email"] {
+	height: 30px;
+	font-size: 20px;
+	width:80%;
+}
+
+input.huge {
+	width: 80%;
+}
+
+input.big {
+	width: 60%;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+	background: none;
+	background-color: #000;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom .navbar-inner .container-fluid {
+	width: 980px;
+	margin: auto;
+}
+
+.navbar-fixed-top .navbar-inner .container-fluid a.brand {
+	color: #FFF;
+	font-weight:bold;
+	text-shadow: none;
+}
+
+.navbar-text, .navbar-text a { 
+	color: #FFF;
+}
+
+
+div.container { 
+	margin-top: 70px;
+	font-family: serif;
+	font-size: 13px;
+	background-color: #FFF;
+	padding: 10px;
+	min-height:620px;
+}
+
+div.about {
+	border: 5px solid #4B8DF9;
+	padding: 10px;
+}
+
+div.buttons {
+	text-align:right;
+}
