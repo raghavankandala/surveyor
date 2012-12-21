@@ -1,0 +1,18 @@
+<td><%= survey.id %></td>
+<td><%= survey.title %></td>
+<td><%= survey.state %></td>
+<td><%= survey.created_at %></td>
+<td>
+	<%= link_to "Show", survey, :class => 'btn btn-primary btn-mini' %> 
+	<%= link_to "Edit", edit_survey_path(survey), :class => 'btn btn-mini' %>
+	&nbsp;
+	<% if survey.closed? || survey.draft? %>
+		<%= link_to "Publish", publish_survey_path(survey), :remote => true, :class => 'btn btn-mini' %> 
+	<% end %>
+	<% if survey.published? %>
+		<%= link_to "Close", close_survey_path(survey), :remote => true, :class => 'btn btn-mini' %> 
+		<%= link_to "Draft", draft_survey_path(survey), :remote => true, :class => 'btn btn-mini' %>
+	<% end %>
+	&nbsp;
+	<%= link_to "Delete", survey_path(survey), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger' %>
+</td>

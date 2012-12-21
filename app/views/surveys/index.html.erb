@@ -1,0 +1,30 @@
+<h2>Surveys <%= link_to "Create new Survey", new_survey_path, :class => 'btn btn-primary' %></h2> <br/>
+
+<% if @surveys.empty? %>
+	<h5>Oops! There seems to be no surveys in the system! <%= link_to "Create one", new_survey_path %> now. </h5>
+<% else %>
+
+<%= paginate(@surveys) %>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>State</th>
+			<th>Created At</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @surveys.each do |survey| %>
+			<tr id="survey_<%= survey.id %>">
+				<%= render :partial => 'survey', :locals => {:survey => survey } %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= paginate(@surveys) %>
+
+<% end %>

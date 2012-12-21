@@ -1,6 +1,14 @@
 Surveyor::Application.routes.draw do
   devise_for :users
 
+  resources :surveys do
+    member do 
+      get 'publish'
+      get 'close'
+      get 'draft'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

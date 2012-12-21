@@ -1,0 +1,5 @@
+<% if flash[:error] %>
+	alert("<%= flash[:error] %>")
+<% else %>
+	$("#survey_<%= @survey.id %>").html("<%=escape_javascript(render :partial => "surveys/survey", :locals => {:survey => @survey }) %>");
+<% end %>
