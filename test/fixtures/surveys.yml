@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+cars_survey: 
+    title: Which cars are the most bought ones
+    slug: which-cars-are-the-most-bought-ones
+    summary: Among the available cars which are the ones that are bought most
+    published : true
+    closed: false
+
+
+Buses_survey: 
+    title: Which Buses are the most widely preferred
+    slug: which-buses-are-the-most-widely-preferred
+    summary: Among the available buses which are the ones that are widely preferred
+    published : true
+    closed: false
