@@ -26,6 +26,10 @@ end
 
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'friendly_id'
+gem 'kaminari'
+gem 'cocoon'
+gem 'cancan'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

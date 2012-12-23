@@ -1,7 +1,15 @@
-<h2>Surveys <%= link_to "Create new Survey", new_survey_path, :class => 'btn btn-primary' %></h2> <br/>
+<h2>Surveys 
+	<% if can? :create, Survey %>
+		<%= link_to "Create new Survey", new_survey_path, :class => 'btn btn-primary' %>
+	<% end %>
+</h2> <br/>
 
 <% if @surveys.empty? %>
-	<h5>Oops! There seems to be no surveys in the system! <%= link_to "Create one", new_survey_path %> now. </h5>
+	<h5>Oops! There seems to be no surveys in the system! 
+		<% if can? :create, Survey %>
+			<%= link_to "Create one", new_survey_path %> now. 
+		<% end %>
+	</h5>
 <% else %>
 
 <%= paginate(@surveys) %>

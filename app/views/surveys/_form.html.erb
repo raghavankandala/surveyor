@@ -3,5 +3,36 @@
 	<%= f.input :title %>
 	<%= f.input :summary, :input_html => {:rows => 10 } %>
 
+	<div id='questions'>
+		<%= f.simple_fields_for :questions, :input_html => {:class => 'form-horizontal'} do |question| %>
+			<%= render 'question', :f => question %>
+		<% end %>
+		<div class='questions'>
+			<%= link_to_add_association 'Add New Question', f, :questions, :partial => 'question' %>
+		</div>
+	</div>
+
+
 	<%= f.submit %>
 <% end %>
+<script type="text/javascript">
+	$("#questions").bind('cocoon:after-insert', function(e, inserted_item){
+		order = 1;
+		$("form :input[type='hidden']").each(function(index, elem){
+			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1; alert(elem.value); }
+		});
+	});
+	$("#questions").bind('cocoon:after-remove', function(e, inserted_item){
+		order = 1;
+		$("form :input[type='hidden']").each(function(index, elem){
+			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1; alert(elem.value); }
+		});
+	});
+	$("#questions").sortable();
+	$("#questions").on("sortstop", function(event, ui) {
+		order = 1;
+		$("form :input[type='hidden']").each(function(index, elem){
+			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1; alert(elem.value); }
+		});
+	});
+</script>

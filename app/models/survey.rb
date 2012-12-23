@@ -1,16 +1,20 @@
 class Survey < ActiveRecord::Base
-	has_many :questions, :dependent => :destroy
+	has_many :questions, :dependent => :destroy, :order => "questions.qorder ASC"
 	has_many :responses, :dependent => :destroy
 
 	validates :title, :presence => true
 	validates :summary, :presence => true
-	validates :slug, :presence => true
-	attr_accessible :title, :slug, :summary
+	validates :slug, :presence => true, :if => Proc.new {|s| !s.title.blank? }
+	attr_accessible :title, :slug, :summary, :questions_attributes
 
-	accepts_nested_attributes_for :questions
+	accepts_nested_attributes_for :questions, :reject_if => :all_blank, :allow_destroy => true
 
 	extend FriendlyId
   	friendly_id :title, use: :slugged
+
+  	def self.published
+  		where("LOWER(state) = ?", 'published')
+  	end
 
   	def published?
   		state.downcase.eql?('published')

@@ -1,3 +1,20 @@
 <h3><%= @survey.title %></h3>
 <p><%= @survey.summary %></p>
 <hr/>
+<h5>Questions</h5>
+<%= simple_form_for @response do |f| %>
+	<%= f.input :survey_id, :as => :hidden %>
+	<%= f.input :user_id, :as => :hidden %>
+	<% @survey.questions.each do |question| %>
+		<p>
+			<%= question.title %> 
+			<%= render "questions/#{question.qtype.gsub(/ /,'_').downcase}", :name => "response[data][#{question.id}]" %>
+		</p>
+	<% end %>
+	<%= f.submit :class => 'btn btn-primary' %>
+<% end %>
+<script type="text/javascript">
+	$(".datepicker").datepicker({
+		format:'dd-mm-yyyy'
+	});
+</script>

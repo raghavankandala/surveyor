@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
-	before_filter :authenticate_user!, :only => [:new, :create, :edit, :update]
+	before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :responses]
+	load_and_authorize_resource
 	before_filter :find_survey, :except => [:new, :create, :index]
 
 	def new
@@ -16,10 +17,16 @@ class SurveysController < ApplicationController
 	end
 
 	def show
+		@response = @survey.responses.build()
+		@response.user = current_user
 	end
 
 	def index
-		@surveys = Survey.page(params[:page] || 1).per(10)
+		if current_user && current_user.role?(:admin)
+			@surveys = Survey.page(params[:page] || 1).per(10)
+		else
+			@surveys = Survey.published.page(params[:page] || 1).per(10)
+		end
 	end
 
 	def destroy
@@ -60,6 +67,10 @@ class SurveysController < ApplicationController
 		respond_to do |format|
 			format.js { render 'publish' }
 		end
+	end
+
+	def responses
+		@responses = @survey.responses
 	end
 
 	protected

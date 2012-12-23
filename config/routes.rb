@@ -6,8 +6,11 @@ Surveyor::Application.routes.draw do
       get 'publish'
       get 'close'
       get 'draft'
+      get 'responses'
     end
   end
+
+  resources :responses 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

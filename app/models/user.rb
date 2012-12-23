@@ -10,4 +10,14 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   validates :username, :presence => true
+
+  has_many :roles_users
+  has_many :roles, :through => :roles_users
+
+  def role?(role)
+    _roles = roles.map(&:name)
+    _role = role.to_s
+    _roles.include? _role
+  end
+
 end

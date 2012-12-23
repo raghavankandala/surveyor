@@ -1,0 +1,11 @@
+<h5>Survey Responses</h5>
+
+<% @responses.each do |response| %>
+	<p style="border-bottom:2px solid #000;">
+		<i>Responded by <%= response.user.username %></i> <br/>
+		<% response.data.each_pair do |key, value| %>
+			<b><%= Question.find(key).title %></b> <br/>
+			<%= value %><br/>
+		<% end %>
+	</p>
+<% end %>
