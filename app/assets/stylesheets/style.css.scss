@@ -37,6 +37,12 @@ input.big {
 	color: #FFF;
 }
 
+.navbar .nav li A, .navbar .nav li A:hover {
+	color: #FFF;
+	text-shadow: none;
+	font-weight:bold;
+}
+
 
 div.container { 
 	margin-top: 70px;
@@ -64,4 +70,62 @@ div.buttons {
 .questions {
 	margin-top: 5px;
 	text-align: right;
+}
+
+
+.notice {
+  color: green;
+}
+
+.alert {
+  color: red;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+	padding: 10px;
+	margin: 10px 0;
+}
+
+.description {
+	font-size: 14px;
+	padding: 10px;
+	margin: 10px 0;
+}
+
+.actions {
+	padding: 10px;
+	margin: 10px 0;
 }

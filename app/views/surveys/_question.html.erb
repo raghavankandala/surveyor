@@ -1,6 +1,6 @@
 <div class = 'nested-fields'>
-   <%= f.input :title, :label => false, :placeholder => "Question" %>
-   <%= f.input :qtype, :collection => ["One Line", "Paragraph", "Date", "Number"], :label => false, :prompt => "Question Type" %>
-   <%= f.input :qorder, :as => :hidden %>
-  <%= link_to_remove_association "Delete Question", f %>
+	<%= f.input :title, :label => false, :placeholder => "Question" %>
+	<%= f.input :qtype, :collection => Survey::QUESTION_TYPES, :label => false, :prompt => "Question Type" %>
+	<%= f.input :qorder, :as => :hidden %>
+	<%= link_to_remove_association "Delete Question", f %>
 </div>

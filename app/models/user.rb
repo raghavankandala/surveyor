@@ -20,4 +20,8 @@ class User < ActiveRecord::Base
     _roles.include? _role
   end
 
+  def taken?(survey)
+    Response.where("survey_id = ? AND user_id = ?", survey.id, self.id).first.nil? ? false : true
+  end
+
 end

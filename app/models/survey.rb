@@ -9,6 +9,9 @@ class Survey < ActiveRecord::Base
 
 	accepts_nested_attributes_for :questions, :reject_if => :all_blank, :allow_destroy => true
 
+	QUESTION_TYPES = ["Text", "Paragraph", "Date", "Number"] 
+	#Multiple Choice Single Selection", "Multipe Choice Multiple Selection", "Date"]
+
 	extend FriendlyId
   	friendly_id :title, use: :slugged
 
@@ -43,6 +46,10 @@ class Survey < ActiveRecord::Base
 
 	def draft!
 		update_attribute('state', 'draft')
+	end
+
+	def response(user)
+		Response.where("user_id = ? AND survey_id = ?", user.id, self.id).first
 	end
 
 end

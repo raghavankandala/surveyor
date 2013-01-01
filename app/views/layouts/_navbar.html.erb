@@ -6,6 +6,9 @@
       <a class="brand" href="/">The Surveyor</a>
       <div class="nav-collapse">
         <ul class="nav">
+          <% if can? :create, Survey %>
+            <li><A href="/surveys/new">Create a Survey</A></li>
+          <% end %>
         </ul>
         <p class="navbar-text pull-right">
           <% if user_signed_in? %>

@@ -1,11 +1,9 @@
-<td><%= survey.id %></td>
-<td><%= survey.title %></td>
-<td><%= survey.state %></td>
-<td><%= survey.created_at %></td>
-<td>
-	<% if can? :read, Survey %>
-		<%= link_to "Show", survey, :class => 'btn btn-primary btn-mini' %> 
-	<% end %>
+<div class="title"><%= survey.title %></div>
+<div class="description"><%= survey.summary%></div>
+<div class="actions">
+	
+	<%= link_to "Take the Survey", new_survey_response_path(survey), :class => 'btn btn-primary btn-mini' %>
+	
 	<% if can? :update, Survey %>
 		<%= link_to "Edit", edit_survey_path(survey), :class => 'btn btn-mini' %>
 
@@ -20,4 +18,8 @@
 		&nbsp;
 		<%= link_to "Delete", survey_path(survey), :method => :delete, :confirm => "Are you sure?", :class => 'btn btn-mini btn-danger' %>
 	<% end %>
-</td>
+
+	<% if can? :manage, Response %>
+		<%= link_to "View Responses", survey_responses_path(survey), :class => 'btn btn-mini' %>
+	<% end %>
+</div>

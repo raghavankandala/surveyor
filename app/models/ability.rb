@@ -13,7 +13,9 @@ class Ability
    def guest
    	can :read, Survey
    	can :create, User
-   	can :create, Session
+      cannot :create, Survey
+      cannot :update, Survey
+   	#can :create, Session
    end
 
    def registered_user

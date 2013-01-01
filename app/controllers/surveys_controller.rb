@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-	before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :responses]
+	before_filter :authenticate_user!, :except => [:index]
 	load_and_authorize_resource
 	before_filter :find_survey, :except => [:new, :create, :index]
 
@@ -17,8 +17,12 @@ class SurveysController < ApplicationController
 	end
 
 	def show
-		@response = @survey.responses.build()
-		@response.user = current_user
+		unless current_user.taken?(@survey)
+			@response = @survey.responses.build()
+			@response.user = current_user
+		else
+			@response = @survey.responses.where("user_id = ?", current_user.id).first
+		end
 	end
 
 	def index

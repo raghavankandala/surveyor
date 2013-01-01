@@ -13,26 +13,28 @@
 	</div>
 
 
-	<%= f.submit %>
+	<%= f.submit :class => 'btn btn-primary' %>
+	<A href="/surveys" class="btn">Cancel</A>
+
 <% end %>
 <script type="text/javascript">
 	$("#questions").bind('cocoon:after-insert', function(e, inserted_item){
 		order = 1;
 		$("form :input[type='hidden']").each(function(index, elem){
-			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1; alert(elem.value); }
+			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1;}
 		});
 	});
 	$("#questions").bind('cocoon:after-remove', function(e, inserted_item){
 		order = 1;
 		$("form :input[type='hidden']").each(function(index, elem){
-			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1; alert(elem.value); }
+			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1;}
 		});
 	});
 	$("#questions").sortable();
 	$("#questions").on("sortstop", function(event, ui) {
 		order = 1;
 		$("form :input[type='hidden']").each(function(index, elem){
-			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1; alert(elem.value); }
+			if(elem.id.match(/order$/) != null) { elem.value = order; order = order + 1;}
 		});
 	});
 </script>
