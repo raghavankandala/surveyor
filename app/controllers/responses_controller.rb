@@ -4,6 +4,15 @@ class ResponsesController < ApplicationController
 
 	def new
 		@survey = Survey.find(params[:survey_id])
+		if @survey.closed?
+			redirect_to "/surveys", :alert => "This survey is closed"
+			return;
+		end
+		unless @survey.published? 
+			redirect_to "/surveys", :alert => "This survey is not yet published"
+			return;
+		end
+		
 		unless current_user.taken?(@survey)
 			@response = @survey.responses.build({:user_id => current_user.id})
 		else

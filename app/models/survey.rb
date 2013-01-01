@@ -33,7 +33,9 @@ class Survey < ActiveRecord::Base
 
 	def publish!
 		unless questions.empty?
-			update_attribute('state', 'published')
+			self.state = 'published'
+			self.published_at = Time.now()
+			self.save
 			true
 		else
 			false
