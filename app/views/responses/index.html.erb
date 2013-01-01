@@ -1,0 +1,17 @@
+<h4>Responses for <i><%= @survey.title %></h4>
+
+<%= paginate(@responses) %>
+
+<table class="table table-striped">
+	<tbody>
+		<% @responses.each do |response| %>
+			<tr>
+				<td>
+					<%= render :partial => 'response', :locals => {:response => response } %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= paginate(@responses) %>

@@ -1,0 +1,10 @@
+<div>By <%= response.user.username %> at <%= response.created_at.strftime("%d-%m-%Y %H:%M %p") %></div>
+<hr/>
+<div class="response">
+	<% response.data.each_pair do |question_id, answer| %>
+		<p>
+			<b><%= Question.find(question_id).title %></b> <br/>
+			<%= answer %>
+		</p>
+	<% end %>
+</div>

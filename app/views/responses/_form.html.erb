@@ -1,0 +1,29 @@
+<h3><%= @survey.title %></h3>
+<p><%= @survey.summary %></p>
+<hr/>
+<% unless current_user.taken?(@survey) %>
+	<h5>Questions</h5>
+	<%= render 'layouts/error_messages', :target => @response %>
+	<%= simple_form_for @response do |f| %>
+		<%= f.input :survey_id, :as => :hidden %>
+		<%= f.input :user_id, :as => :hidden %>
+		<% @survey.questions.each do |question| %>
+			<p>
+				<%= question.title %> (required)
+				<%= render :partial => "questions/#{question.qtype.gsub(/ /,'_').downcase}", :locals => { :name => "response[data][#{question.id}]", :value => (@response.data.nil? ? "" : @response.data.fetch("#{question.id}")) } %>
+			</p>
+		<% end %>
+		<hr/>
+		<%= f.submit :class => 'btn btn-primary' %>
+		<A href="/surveys" class="btn">Back to Surveys</A>
+	<% end %>
+	<script type="text/javascript">
+		$(".datepicker").datepicker({
+			format:'dd-mm-yyyy'
+		});
+	</script>
+<% else %>
+	<h6> You have already participated in this Survey and the following was your response </h6>
+	<%= render :partial => 'responses/response', :locals => { :response => @response } %><br/>
+	<A href="/surveys" class="btn btn-primary">Back to Surveys</A>
+<% end %>
