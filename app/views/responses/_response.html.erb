@@ -1,5 +1,9 @@
-<div>By <%= response.user.username %> at <%= response.created_at.strftime("%d-%m-%Y %H:%M %p") %></div>
-<hr/>
+<div style="text-align:right;">
+	<span style="border-bottom:1px dotted #cacaca;">
+		By <%= response.user.username %> at <%= response.created_at.strftime("%d-%m-%Y %I:%M %p") %>
+	</span>
+</div>
+<br/>
 <div class="response">
 	<% response.data.each_pair do |question_id, answer| %>
 		<p>
